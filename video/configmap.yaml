@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: # kpt-merge: /video-service-config
+  name: video-service-config
+  annotations:
+    internal.kpt.dev/upstream-identifier: '|ConfigMap|default|video-service-config'
+data:
+  ingress_route_paths: |
+    {
+      "replay": "/replay",
+    }
+  event_templates: |
+    {
+      "replay": {"action": "replay", "data": "Sample data for replay"},
+    }
