@@ -17,6 +17,6 @@ upstreamLock:
     repo: https://github.com/oneJang/management.git
     directory: video
     ref: main
-    commit: 3f39b96c2ac78dbc4323ae3389350690816a00b3
+    commit: 4c29dee1c6cd8290e3479d7710cd01a7dbb9d685
 info:
   description: sample description
