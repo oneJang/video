@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata: # kpt-merge: default/video-service-account
+  name: video-service-account
+  namespace: default
+  annotations:
+    internal.kpt.dev/upstream-identifier: '|ServiceAccount|default|video-service-account'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata: # kpt-merge: default/configmap-access-role
+  namespace: default
+  name: configmap-access-role
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|Role|default|configmap-access-role'
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "watch", "list"] # Adjust verbs as per your application's requirements
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: # kpt-merge: default/configmap-access-rolebinding
+  name: configmap-access-rolebinding
+  namespace: default
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'rbac.authorization.k8s.io|RoleBinding|default|configmap-access-rolebinding'
+subjects:
+- kind: ServiceAccount
+  name: video-service-account # Replace with the actual service account name
+  namespace: default
+roleRef:
+  kind: Role
+  name: configmap-access-role
+  apiGroup: rbac.authorization.k8s.io
