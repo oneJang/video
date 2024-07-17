@@ -17,6 +17,6 @@ upstreamLock:
     repo: https://github.com/oneJang/management.git
     directory: video/video-knative
     ref: main
-    commit: e1c9b5c781d37f8b29420d0ac7d666e08b88e163
+    commit: 39cf03cbe337b294e743be38bbafbe2710e02982
 info:
   description: sample description
